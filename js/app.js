@@ -56,12 +56,9 @@ $('.fa-repeat').click(function () {
 // Add event listeners to cards
 function addActionsToCards() {
     $('.card').click(function (event) {
-        
+
         displayCard($(this));
         addItemToList($(this));
-        // Removes click event binding for the
-        // clicked element
-        $(this).unbind();
     });
 }
 
@@ -70,7 +67,7 @@ function addActionsToCards() {
 function validateCardMatchAndProcess(card) {
     // TODO: to be refactored for much easier comparision
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
-        
+
         // Freeze matched open cards
         openCards.forEach(function (elem) {
             elem.addClass('match');
@@ -78,9 +75,13 @@ function validateCardMatchAndProcess(card) {
     }
     else {
         // reset
+    
         openCards.forEach(function (elem) {
-            elem.removeClass().addClass('card');
-        
+            elem.removeClass().addClass('card error');
+            elem.effect('shake');
+            setTimeout(function () {
+                elem.removeClass().addClass('card');
+            }, 1000);
         });
     }
     openCards = [];
@@ -89,6 +90,7 @@ function validateCardMatchAndProcess(card) {
 // Add items to list and process validations
 function addItemToList(card) {
     openCards.push(card);
+    card.attr('disabled','disabled');
 
     // validate if first card exists
     if (openCards.length > 1) {

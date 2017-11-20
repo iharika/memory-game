@@ -107,3 +107,9 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.deck .card.error {
+    background: #ff7a7e;
+    cursor: default;
+    font-size: 33px;
+}
