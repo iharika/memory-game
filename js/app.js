@@ -58,7 +58,6 @@ function addActionsToCards() {
     $('.card').click(function (event) {
         
         displayCard($(this));
-        
         addItemToList($(this));
         // Removes click event binding for the
         // clicked element
@@ -101,31 +100,6 @@ function addItemToList(card) {
 function displayCard(card) {
     card.addClass('open show');
 };
-
-// function addCardToList(card) {
-//     if(openCards[0] != null || openCards[0] != 'undefined') {
-//         openCards[1] = card;
-//         if(openCards[0] === openCards[1]){
-//             openCards.forEach(function(elem){ 
-//                 elem.removeClass();
-//                 elem.addClass('match');
-//             });
-//             openCards = [];
-//         } else {
-//             openCards.forEach(function(elem){
-//                 elem.removeClass();
-//                 elem.addClass('card');
-//             });
-//             openCards = [];
-//         }
-//     }    
-//     else{
-//         openCards[0] = card;
-//     }
-
-
-// };  
-
 
 $(document).ready(function () {
     addActionsToCards();
