@@ -1,7 +1,7 @@
 /* Create a list that holds all of your cards
  */
 var openCards = [];
-var totalOpenCards = 0, moves = 0;
+var totalOpenCards = 0, moves = 0, stars=0;
 
 /*
  * Display the cards on the page
@@ -64,7 +64,15 @@ function addActionsToCards() {
 // Validates current clicked card
 // Process the opened cards
 function validateCardMatchAndProcess(card) {
-    // TODO: to be refactored for much easier comparision
+    moves = moves + 1;
+    $('.moves').text(moves);
+
+    switch (moves) {
+        case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+    }
+
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
 
 
@@ -90,13 +98,7 @@ function validateCardMatchAndProcess(card) {
         });
     }
     openCards = [];
-    moves = moves + 1;
-    $('.moves').text(moves);
-    switch (moves) {
-        case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
-    }
+    
 
 }
 
@@ -128,8 +130,10 @@ function resetStars() {
 }
 
 function gameOver() {
+    stars = $('.fa-star').length;
     $('.container').remove();
     $('body').append("<h2>Congratulations!!!</h2>");
-    $('body').append("<p>Number of moves: " + moves + "</p>");
+    $('body').append("<p>You won with " + moves + " moves and " + star(s) + " Stars </p>");
+
 
 }
