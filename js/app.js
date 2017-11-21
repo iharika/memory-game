@@ -2,7 +2,7 @@
  */
 // Global variables
 var openCards = [];
-var totalOpenCards = 0, moves = 0, stars = 0, t,d,newd,timerResult;
+var totalOpenCards = 0, moves = 0, stars = 0, t, d, newd, timerResult;
 
 /*
  * Display the cards on the page
@@ -13,6 +13,7 @@ var totalOpenCards = 0, moves = 0, stars = 0, t,d,newd,timerResult;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
+    'use strict';
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -25,10 +26,11 @@ function shuffle(array) {
 }
 /*  Function to reset the game
     Resets the moves, star and clears
-    the opened cards list. 
-    Shows the start game modal pop up 
+    the opened cards list.
+    Shows the start game modal pop up
 */
 function resetGame() {
+    'use strict';
     shuffleTheDeck();
     totalOpenCards = 0;
     resetMoves();
@@ -61,6 +63,7 @@ function shuffleTheDeck() {
 
 // Add event listeners to cards
 function addActionsToCards() {
+    'use strict';
     $('.card').click(function (event) {
         if (!$(this).hasClass('open show')) {
             displayCard($(this));
@@ -72,6 +75,7 @@ function addActionsToCards() {
 // Validates current clicked card
 // Process the opened cards
 function validateCardMatchAndProcess(card) {
+    'use strict';
     calculateRatingAndUpdate();
     // Check if the cards match
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
@@ -84,9 +88,10 @@ function validateCardMatchAndProcess(card) {
     }
     openCards = [];
 }
-// Function to show card error 
+// Function to show card error
 // on card match failure.
 function cardMatchFailure() {
+    'use strict';
     openCards.forEach(function (elem) {
         elem.removeClass().addClass('card error');
         elem.effect('shake', 'slow', '1');
@@ -97,9 +102,10 @@ function cardMatchFailure() {
 }
 /*  Function to show card match success
     Freeze the cards, update and check total opened cards
-    If all cards are opened - game over..!!! 
+    If all cards are opened - game over..!!!
 */
 function cardMatchSuccess() {
+    'use strict';
     openCards.forEach(function (elem) {
         elem.removeClass().addClass('card match');
     });
@@ -108,11 +114,12 @@ function cardMatchSuccess() {
         gameOver();
     }
 }
-/*  Function to calculate rating 
+/*  Function to calculate rating
     based on number of moves
     Update the rating stars on the UI.
 */
 function calculateRatingAndUpdate() {
+    'use strict';
     moves = moves + 1;
     $('.moves').text(moves);
     switch (moves) {
@@ -128,6 +135,7 @@ function calculateRatingAndUpdate() {
 
 // Add items to list and process validations
 function addItemToList(card) {
+    'use strict';
     openCards.push(card);
     // validate if first card exists
     if (openCards.length > 1) {
@@ -163,14 +171,14 @@ function gameOver() {
     $('#timer-result').text(timerResult);
     $('#exampleModalLong').modal()
     clearInterval(t);
-    d,newd = '';
+    d, newd = '';
 }
 
 // Function to start the time ticker
 // Timer is cleared upon successful game completion
 function startTimer() {
     //new fixed date kind  - i.e. what will be received from the server
-     d = new Date();
+    d = new Date();
     //func that transforms miliseconds in digital clock format i.e. 22:34:12
     function transformMiliseconds(t) {
         var h = Math.floor((t / (1000 * 60 * 60)) % 24);
@@ -192,7 +200,7 @@ function startTimer() {
 }
 
 /*
-    Document ready functions, 
+    Document ready functions,
     Buttons event listeners bindings
 */
 $(document).ready(function () {

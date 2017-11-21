@@ -155,6 +155,9 @@ h1 {
 .btn {
     cursor: pointer;
 }
+.success-won-msg{
+    font-size: 24px;
+}
 
 /*Timer  */
 
