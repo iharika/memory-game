@@ -1,11 +1,5 @@
 # Memory Game Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [How The Game Works](#How The Game Works)
-
-
 ## Instructions
 This is a browser-based card matching game. A user wins once all cards have successfully been matched.
 
@@ -20,8 +14,12 @@ Each turn:
 4. If the cards do not match, both cards are flipped face down.
 5. The game ends once all cards have been correctly matched.
 
-
-
+## Dependencies
+This project uses the following libraries
+1. ```jquery```
+2. ```jquery-ui```
+3. ```bootstrap```
+4. ```popper.min.js```
 
 
 
