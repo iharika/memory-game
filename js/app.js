@@ -37,9 +37,6 @@ $('.fa-repeat').click(function () {
 
 });
 
-
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -56,9 +53,10 @@ $('.fa-repeat').click(function () {
 // Add event listeners to cards
 function addActionsToCards() {
     $('.card').click(function (event) {
-
-        displayCard($(this));
-        addItemToList($(this));
+        if(!$(this).hasClass('open show')){
+            displayCard($(this));
+            addItemToList($(this));
+        }
     });
 }
 
@@ -70,18 +68,19 @@ function validateCardMatchAndProcess(card) {
 
         // Freeze matched open cards
         openCards.forEach(function (elem) {
-            elem.addClass('match');
+            elem.removeClass().addClass('card match');
         });
     }
     else {
         // reset
-    
+
         openCards.forEach(function (elem) {
             elem.removeClass().addClass('card error');
-            elem.effect('shake');
+            elem.effect('shake','slow','1');
             setTimeout(function () {
                 elem.removeClass().addClass('card');
-            }, 1000);
+            }, 300);
+
         });
     }
     openCards = [];
@@ -90,8 +89,6 @@ function validateCardMatchAndProcess(card) {
 // Add items to list and process validations
 function addItemToList(card) {
     openCards.push(card);
-    card.attr('disabled','disabled');
-
     // validate if first card exists
     if (openCards.length > 1) {
         validateCardMatchAndProcess();
