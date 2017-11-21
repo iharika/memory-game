@@ -2,7 +2,9 @@
  * Create a list that holds all of your cards
  */
 var openCards = [];
-var totalOpenCards;
+var totalOpenCards, moves = 0;
+
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -26,13 +28,14 @@ function shuffle(array) {
 }
 
 $('.fa-repeat').click(function () {
-    $('ul').children().removeClass().addClass('card')
+    $('ul').children().removeClass().addClass('card');
     var shuffledDeck = shuffle($('.deck').children('li')).toArray();
     $('ul.deck > li').remove();
     shuffledDeck.forEach(function (elem) {
         $('ul.deck').append(elem);
     });
-
+    resetMoves();
+    // resetStars();
     addActionsToCards();
 
 });
@@ -53,7 +56,7 @@ $('.fa-repeat').click(function () {
 // Add event listeners to cards
 function addActionsToCards() {
     $('.card').click(function (event) {
-        if(!$(this).hasClass('open show')){
+        if (!$(this).hasClass('open show')) {
             displayCard($(this));
             addItemToList($(this));
         }
@@ -76,7 +79,7 @@ function validateCardMatchAndProcess(card) {
 
         openCards.forEach(function (elem) {
             elem.removeClass().addClass('card error');
-            elem.effect('shake','slow','1');
+            elem.effect('shake', 'slow', '1');
             setTimeout(function () {
                 elem.removeClass().addClass('card');
             }, 300);
@@ -84,6 +87,14 @@ function validateCardMatchAndProcess(card) {
         });
     }
     openCards = [];
+    moves = moves + 1;
+    $('.moves').text(moves);
+    switch (moves) {
+        case 5: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+    }
+
 }
 
 // Add items to list and process validations
@@ -103,3 +114,16 @@ function displayCard(card) {
 $(document).ready(function () {
     addActionsToCards();
 });
+
+function resetMoves() {
+    moves = 0;
+    $('.moves').text(moves);
+}
+
+// function resetStars() {
+//     var starArray = [];
+//     starArray = $('.stars').children('li').toArray;
+//     starArray.forEach(function(elem) {
+//         elem.removeClass().addClass('fa fa-star');
+//     }); 
+// }
