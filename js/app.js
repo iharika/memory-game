@@ -1,5 +1,4 @@
-/*
- * Create a list that holds all of your cards
+/* Create a list that holds all of your cards
  */
 var openCards = [];
 var totalOpenCards, moves = 0;
@@ -35,7 +34,7 @@ $('.fa-repeat').click(function () {
         $('ul.deck').append(elem);
     });
     resetMoves();
-    // resetStars();
+    resetStars();
     addActionsToCards();
 
 });
@@ -120,10 +119,6 @@ function resetMoves() {
     $('.moves').text(moves);
 }
 
-// function resetStars() {
-//     var starArray = [];
-//     starArray = $('.stars').children('li').toArray;
-//     starArray.forEach(function(elem) {
-//         elem.removeClass().addClass('fa fa-star');
-//     }); 
-// }
+function resetStars() {
+    $('.stars').children('li').replaceWith("<li><i class=\"fa fa-star\"></i></li>");
+}
