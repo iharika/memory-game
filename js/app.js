@@ -130,17 +130,12 @@ function resetStars() {
 }
 
 function gameOver() {
-<<<<<<< HEAD
     stars = $('.fa-star').length;
-    $('.container').remove();
-    $('body').append("<h2>Congratulations!!!</h2>");
-    $('body').append("<p>You won with " + moves + " moves and " + star(s) + " Stars </p>");
-
-
-=======
     // $('.container').remove();
     // $('body').append("<h2>Congratulations!!!</h2>");
-    // $('body').append("<p>Number of moves: " + moves + "</p>");
+    // $('body').append("<p>You won with " + moves + " moves and " + star(s) + " Stars </p>");
+
+    $('#number-of-moves').text(moves);
+    $('#stars').text(stars);   
     $('#exampleModalLong').modal()
->>>>>>> cd5ba0349133b84031454b1cb7ee07de2d8408aa
 }
