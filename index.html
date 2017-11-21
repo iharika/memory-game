@@ -8,9 +8,12 @@
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,7 +22,6 @@
         <header>
             <h1>Memory Game</h1>
         </header>
-
         <section class="score-panel">
             <ul class="stars">
                 <li><i class="fa fa-star"></i></li>
@@ -28,12 +30,12 @@
             </ul>
 
             <span class="moves">0</span> Moves
-
+            <span id="time_ticker">00:00:00</span>
             <div class="restart">
                 <i class="fa fa-repeat"></i>
             </div>
             <!-- Uncomment the below button to show the pop up on demand -->
-             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                     Launch demo modal
                   </button>  -->
         </section>
@@ -92,20 +94,23 @@
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-image"> 
+                <div class="modal-image">
                     <br>
                     <img src="img/congrats.png" alt="congrats image" height=120 width=120>
 
                 </div>
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLabel">Congratulations!!!</h2>
-                     
+
                 </div>
                 <div class="modal-body">
                     <span class="success-msg"><h4>You've won.</h4></span>
 
                     <div>
                         With <span id="number-of-moves"></span> moves and <span id="stars"></span> Star(s).
+                    </div>
+                    <div>
+                        Time Elapsed (in HH:MM:SS): <span id="timer-result"></span>
                     </div>
                 </div>
 
@@ -119,14 +124,14 @@
     <div class="modal fade" id="startGameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-image"> 
+                <div class="modal-image">
                     <br>
                     <img src="img/Memory.jpg" alt="Memory game image" height=180 width=180>
 
                 </div>
                 <div class="modal-header">
                     <h2 class="modal-title">Welcome to Memory Game</h2>
-                     
+
                 </div>
 
                 <div class="modal-footer">
@@ -136,8 +141,10 @@
         </div>
     </div>
     <script src="js/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

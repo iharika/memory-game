@@ -1,7 +1,7 @@
 /* Create a list that holds all of your cards
  */
- var openCards = [];
-    var totalOpenCards = 0, moves = 0, stars = 0;
+var openCards = [];
+var totalOpenCards = 0, moves = 0, stars = 0, t,d,newd,timerResult;
 
 /*
  * Display the cards on the page
@@ -129,14 +129,18 @@ function resetMoves() {
 
 function resetStars() {
     $('.stars').children('li').replaceWith("<li><i class=\"fa fa-star\"></i></li>");
-    stars=0;
+    stars = 0;
 }
 
 function gameOver() {
     stars = $('.fa-star').length;
+    timerResult = $('#time_ticker').text();
     $('#number-of-moves').text(moves);
     $('#stars').text(stars);
+    $('#timer-result').text(timerResult);
     $('#exampleModalLong').modal()
+    clearInterval(t);
+    d,newd = '';
 }
 
 $('.btnPlayAgain').click(function () {
@@ -145,12 +149,44 @@ $('.btnPlayAgain').click(function () {
 
 $('.btnStartGame').click(function () {
     addActionsToCards();
+    startTimer();
 });
 
 $(document).ready(function () {
     resetGame();
 });
 
-$('.btnClose').click(function() {
+$('.btnClose').click(function () {
     $('.card').off('click');
 });
+
+function startTimer() {
+
+    //new fixed date kind  - i.e. what will be received from the server
+     d = new Date();
+
+
+    //func that transforms miliseconds in digital clock format i.e. 22:34:12
+    function transformMiliseconds(t) {
+        var h = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var m = Math.floor((t / (1000 * 60)) % 60);
+        var s = Math.floor((t / 1000) % 60);
+
+        h = (h < 10) ? '0' + h : h;
+        m = (m < 10) ? '0' + m : m;
+        s = (s < 10) ? '0' + s : s;
+        return h + ':' + m + ':' + s;
+    }
+
+
+    //ticker function that will refresh our display every second
+    function tick() {
+        newd = new Date();
+        document.getElementById('time_ticker').innerHTML = transformMiliseconds(newd - d);
+    }
+
+
+    //the runner
+    t = setInterval(tick, 1000);
+
+}

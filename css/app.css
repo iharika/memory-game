@@ -157,3 +157,11 @@ h1 {
 .modal-content{
     align-items: center;
 }
+
+/*Timer  */
+span#time_ticker {
+    border: 1px solid black;
+    padding: 4px;
+    margin-left: 10px;
+    border-radius: 2px;
+}
