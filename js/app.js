@@ -1,5 +1,6 @@
 /* Create a list that holds all of your cards
  */
+// Global variables
 var openCards = [];
 var totalOpenCards = 0, moves = 0, stars = 0, t,d,newd,timerResult;
 
@@ -13,7 +14,6 @@ var totalOpenCards = 0, moves = 0, stars = 0, t,d,newd,timerResult;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -21,25 +21,29 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
-
-$('.fa-repeat').click(function () {
-    resetGame();
-});
-
+/*  Function to reset the game
+    Resets the moves, star and clears
+    the opened cards list. 
+    Shows the start game modal pop up 
+*/
 function resetGame() {
+    shuffleTheDeck();
+    totalOpenCards = 0;
+    resetMoves();
+    resetStars();
+    $('#startGameModal').modal();
+}
+// Randommly shuffles the cards
+// Appends the shuffled cards to the game
+function shuffleTheDeck() {
     $('ul').children().removeClass().addClass('card');
     var shuffledDeck = shuffle($('.deck').children('li')).toArray();
     $('ul.deck > li').remove();
     shuffledDeck.forEach(function (elem) {
         $('ul.deck').append(elem);
     });
-    totalOpenCards = 0;
-    resetMoves();
-    resetStars();
-    $('#startGameModal').modal();
 }
 
 /*
@@ -68,42 +72,58 @@ function addActionsToCards() {
 // Validates current clicked card
 // Process the opened cards
 function validateCardMatchAndProcess(card) {
-    moves = moves + 1;
-    $('.moves').text(moves);
-
-    switch (moves) {
-        case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 30: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
-    }
-
+    calculateRatingAndUpdate();
+    // Check if the cards match
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
-
-
-        // Freeze matched open cards
-        openCards.forEach(function (elem) {
-            elem.removeClass().addClass('card match');
-        });
-        totalOpenCards = totalOpenCards + 2;
-        if (totalOpenCards === 16) {
-            gameOver();
-        }
+        // On successful card match
+        cardMatchSuccess();
     }
     else {
-        // reset
-
-        openCards.forEach(function (elem) {
-            elem.removeClass().addClass('card error');
-            elem.effect('shake', 'slow', '1');
-            setTimeout(function () {
-                elem.removeClass().addClass('card');
-            }, 1000);
-
-        });
+        // On card match failure
+        cardMatchFailure();
     }
     openCards = [];
-
-
+}
+// Function to show card error 
+// on card match failure.
+function cardMatchFailure() {
+    openCards.forEach(function (elem) {
+        elem.removeClass().addClass('card error');
+        elem.effect('shake', 'slow', '1');
+        setTimeout(function () {
+            elem.removeClass().addClass('card');
+        }, 1000);
+    });
+}
+/*  Function to show card match success
+    Freeze the cards, update and check total opened cards
+    If all cards are opened - game over..!!! 
+*/
+function cardMatchSuccess() {
+    openCards.forEach(function (elem) {
+        elem.removeClass().addClass('card match');
+    });
+    totalOpenCards = totalOpenCards + 2;
+    if (totalOpenCards === 16) {
+        gameOver();
+    }
+}
+/*  Function to calculate rating 
+    based on number of moves
+    Update the rating stars on the UI.
+*/
+function calculateRatingAndUpdate() {
+    moves = moves + 1;
+    $('.moves').text(moves);
+    switch (moves) {
+        case 15:
+            $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+            break;
+        case 20:
+            $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+            break;
+        case 30: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+    }
 }
 
 // Add items to list and process validations
@@ -120,18 +140,21 @@ function displayCard(card) {
     card.addClass('open show');
 };
 
-
-
+// Reset the total moves count to 0 and update the label
 function resetMoves() {
     moves = 0;
     $('.moves').text(moves);
 }
-
+// Function to reset the star rating back to 3
 function resetStars() {
     $('.stars').children('li').replaceWith("<li><i class=\"fa fa-star\"></i></li>");
     stars = 0;
 }
 
+/*  Woohooo! Successfully completed the game !!!!!
+    Function to show the success modal pop up with
+    number of moves, time elapsed and star ratings
+*/
 function gameOver() {
     stars = $('.fa-star').length;
     timerResult = $('#time_ticker').text();
@@ -143,29 +166,11 @@ function gameOver() {
     d,newd = '';
 }
 
-$('.btnPlayAgain').click(function () {
-    resetGame();
-});
-
-$('.btnStartGame').click(function () {
-    addActionsToCards();
-    startTimer();
-});
-
-$(document).ready(function () {
-    resetGame();
-});
-
-$('.btnClose').click(function () {
-    $('.card').off('click');
-});
-
+// Function to start the time ticker
+// Timer is cleared upon successful game completion
 function startTimer() {
-
     //new fixed date kind  - i.e. what will be received from the server
      d = new Date();
-
-
     //func that transforms miliseconds in digital clock format i.e. 22:34:12
     function transformMiliseconds(t) {
         var h = Math.floor((t / (1000 * 60 * 60)) % 24);
@@ -177,16 +182,39 @@ function startTimer() {
         s = (s < 10) ? '0' + s : s;
         return h + ':' + m + ':' + s;
     }
-
-
     //ticker function that will refresh our display every second
     function tick() {
         newd = new Date();
         document.getElementById('time_ticker').innerHTML = transformMiliseconds(newd - d);
     }
-
-
     //the runner
     t = setInterval(tick, 1000);
-
 }
+
+/*
+    Document ready functions, 
+    Buttons event listeners bindings
+*/
+$(document).ready(function () {
+    resetGame();
+});
+
+// Resets the game when reset button is clicked
+$('.fa-repeat').click(function () {
+    resetGame();
+});
+// Reset game, start new game
+$('.btnPlayAgain').click(function () {
+    resetGame();
+});
+// Adds actions to cards and starts the timer when
+// Start playing button is clicked
+$('.btnStartGame').click(function () {
+    addActionsToCards();
+    startTimer();
+});
+// Removes click functionality on opened cards when
+// player clicks on close button
+$('.btnClose').click(function () {
+    $('.card').off('click');
+});

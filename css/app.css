@@ -142,8 +142,10 @@ h1 {
 
 .modal-content {
     height: auto;
-    min-height: 80%;
+    min-height: 50%;
     border-radius: 0;
+    align-items: center;
+    text-align: center;
 }
 
 .success-msg {
@@ -154,11 +156,8 @@ h1 {
     cursor: pointer;
 }
 
-.modal-content{
-    align-items: center;
-}
-
 /*Timer  */
+
 span#time_ticker {
     border: 1px solid black;
     padding: 4px;
