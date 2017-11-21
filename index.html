@@ -29,11 +29,13 @@
 
             <span class="moves">0</span> Moves
 
+            <span id="time_ticker">00:00:00</span>
+
             <div class="restart">
                 <i class="fa fa-repeat"></i>
             </div>
             <!-- Uncomment the below button to show the pop up on demand -->
-             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                     Launch demo modal
                   </button>  -->
         </section>
@@ -92,13 +94,13 @@
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-image"> 
+                <div class="modal-image">
                     <br>
                     <img src="img/congrats.png" alt="congrats image" height=120 width=120>
 
                 </div>
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel">Congratulations!!!</h2>                     
+                    <h2 class="modal-title" id="exampleModalLabel">Congratulations!!!</h2>
                 </div>
                 <div class="modal-body">
                     <span class="success-msg"><h4>You've won.</h4></span>
@@ -106,11 +108,45 @@
                     <div>
                         With <span id="number-of-moves"></span> moves and <span id="stars"></span> Star(s).
                     </div>
+                    <div>
+                        Time Elapsed (in HH:MM:SS): <span id="elapsed-time"></span>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btnClose" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary btnPlayAgain" data-dismiss="modal">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="resetGameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content small-modal">
+                <div class="modal-image">
+                    <br>
+                    <i class="fa fa-spinner fa-spin " style="font-size: -webkit-xxx-large;"></i>
+
+                </div>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Shuffling...</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="startGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content small-modal">
+                <div class="modal-image">
+                    <br>
+                    <img src="img/memory-game-logo.jpg" alt="Memory game" height=120 width=120>
+
+                </div>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Memory Game</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btnPlayAgain" data-dismiss="modal">Start Game</button>
                 </div>
             </div>
         </div>
