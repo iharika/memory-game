@@ -128,8 +128,8 @@ function resetStars() {
 }
 
 function gameOver() {
-    $('.container').remove();
-    $('body').append("<h2>Congratulations!!!</h2>");
-    $('body').append("<p>Number of moves: " + moves + "</p>");
-
+    // $('.container').remove();
+    // $('body').append("<h2>Congratulations!!!</h2>");
+    // $('body').append("<p>Number of moves: " + moves + "</p>");
+    $('#exampleModalLong').modal()
 }
