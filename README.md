@@ -1,11 +1,5 @@
 # Memory Game Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [How The Game Works](#How The Game Works)
-
-
 ## Instructions
 This is a browser-based card matching game. A user wins once all cards have successfully been matched.
 
@@ -14,14 +8,18 @@ The game board consists of sixteen "cards" arranged in a grid. The deck is made 
 
 Each turn:
 
-The player flips one card over to reveal its underlying symbol.
-The player then turns over a second card, trying to find the corresponding card with the same symbol.
-If the cards match, both cards stay flipped over.
-If the cards do not match, both cards are flipped face down.
-The game ends once all cards have been correctly matched.
+1. The player flips one card over to reveal its underlying symbol.
+2. The player then turns over a second card, trying to find the corresponding card with the same symbol.
+3. If the cards match, both cards stay flipped over.
+4. If the cards do not match, both cards are flipped face down.
+5. The game ends once all cards have been correctly matched.
 
-
-
+## Dependencies
+This project uses the following libraries
+1. ```jquery```
+2. ```jquery-ui```
+3. ```bootstrap```
+4. ```popper.min.js```
 
 
 
