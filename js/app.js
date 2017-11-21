@@ -1,7 +1,7 @@
 /* Create a list that holds all of your cards
  */
-var openCards = [];
-var totalOpenCards = 0, moves = 0, stars = 0;
+ var openCards = [];
+    var totalOpenCards = 0, moves = 0, stars = 0;
 
 /*
  * Display the cards on the page
@@ -36,9 +36,10 @@ function resetGame() {
     shuffledDeck.forEach(function (elem) {
         $('ul.deck').append(elem);
     });
+    totalOpenCards = 0;
     resetMoves();
     resetStars();
-    addActionsToCards();
+    $('#startGameModal').modal();
 }
 
 /*
@@ -72,8 +73,8 @@ function validateCardMatchAndProcess(card) {
 
     switch (moves) {
         case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 30: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
     }
 
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
@@ -119,9 +120,7 @@ function displayCard(card) {
     card.addClass('open show');
 };
 
-$(document).ready(function () {
-    addActionsToCards();
-});
+
 
 function resetMoves() {
     moves = 0;
@@ -130,6 +129,7 @@ function resetMoves() {
 
 function resetStars() {
     $('.stars').children('li').replaceWith("<li><i class=\"fa fa-star\"></i></li>");
+    stars=0;
 }
 
 function gameOver() {
@@ -141,4 +141,16 @@ function gameOver() {
 
 $('.btnPlayAgain').click(function () {
     resetGame();
+});
+
+$('.btnStartGame').click(function () {
+    addActionsToCards();
+});
+
+$(document).ready(function () {
+    resetGame();
+});
+
+$('.btnClose').click(function() {
+    $('.card').off('click');
 });
