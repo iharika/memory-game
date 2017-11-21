@@ -33,9 +33,9 @@
                 <i class="fa fa-repeat"></i>
             </div>
             <!-- Uncomment the below button to show the pop up on demand -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                     Launch demo modal
-                  </button> -->
+                  </button>  -->
         </section>
 
         <ul class="deck">
@@ -92,24 +92,25 @@
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <div class="modal-image"> 
+                    <br>
+                    <img src="img/congrats.png" alt="congrats image" height=120 width=120>
+
+                </div>
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Congratulations !!!!!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <h2 class="modal-title" id="exampleModalLabel">Congratulations!!!</h2>                     
                 </div>
                 <div class="modal-body">
-                    <span class="success-msg">You've won.</span>
+                    <span class="success-msg"><h4>You've won.</h4></span>
 
                     <div>
-                        Number of moves: <span id="number-of-moves"></span>
+                        With <span id="number-of-moves"></span> moves and <span id="stars"></span> Star(s).
                     </div>
-                    <div>Stars: <span id="stars"></span></div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Play Again</button>
+                    <button type="button" class="btn btn-secondary btnClose" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btnPlayAgain" data-dismiss="modal">Play Again</button>
                 </div>
             </div>
         </div>

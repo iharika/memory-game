@@ -1,7 +1,7 @@
 /* Create a list that holds all of your cards
  */
 var openCards = [];
-var totalOpenCards = 0, moves = 0, stars=0;
+var totalOpenCards = 0, moves = 0, stars = 0;
 
 /*
  * Display the cards on the page
@@ -26,6 +26,10 @@ function shuffle(array) {
 }
 
 $('.fa-repeat').click(function () {
+    resetGame();
+});
+
+function resetGame() {
     $('ul').children().removeClass().addClass('card');
     var shuffledDeck = shuffle($('.deck').children('li')).toArray();
     $('ul.deck > li').remove();
@@ -35,8 +39,7 @@ $('.fa-repeat').click(function () {
     resetMoves();
     resetStars();
     addActionsToCards();
-
-});
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -98,7 +101,7 @@ function validateCardMatchAndProcess(card) {
         });
     }
     openCards = [];
-    
+
 
 }
 
@@ -131,11 +134,11 @@ function resetStars() {
 
 function gameOver() {
     stars = $('.fa-star').length;
-    // $('.container').remove();
-    // $('body').append("<h2>Congratulations!!!</h2>");
-    // $('body').append("<p>You won with " + moves + " moves and " + star(s) + " Stars </p>");
-
     $('#number-of-moves').text(moves);
-    $('#stars').text(stars);   
+    $('#stars').text(stars);
     $('#exampleModalLong').modal()
 }
+
+$('.btnPlayAgain').click(function () {
+    resetGame();
+});

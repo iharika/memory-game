@@ -149,3 +149,11 @@ h1 {
 .success-msg {
     text-align: center;
 }
+
+.btn {
+    cursor: pointer;
+}
+
+.modal-content{
+    align-items: center;
+}
