@@ -1,9 +1,7 @@
-/*
- * Create a list that holds all of your cards
+/* Create a list that holds all of your cards
  */
 var openCards = [];
-var totalOpenCards, moves = 0;
-
+var totalOpenCards = 0, moves = 0;
 
 /*
  * Display the cards on the page
@@ -35,7 +33,7 @@ $('.fa-repeat').click(function () {
         $('ul.deck').append(elem);
     });
     resetMoves();
-    // resetStars();
+    resetStars();
     addActionsToCards();
 
 });
@@ -69,10 +67,15 @@ function validateCardMatchAndProcess(card) {
     // TODO: to be refactored for much easier comparision
     if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
 
+
         // Freeze matched open cards
         openCards.forEach(function (elem) {
             elem.removeClass().addClass('card match');
         });
+        totalOpenCards = totalOpenCards + 2;
+        if (totalOpenCards === 16) {
+            gameOver();
+        }
     }
     else {
         // reset
@@ -82,7 +85,7 @@ function validateCardMatchAndProcess(card) {
             elem.effect('shake', 'slow', '1');
             setTimeout(function () {
                 elem.removeClass().addClass('card');
-            }, 300);
+            }, 1000);
 
         });
     }
@@ -90,9 +93,9 @@ function validateCardMatchAndProcess(card) {
     moves = moves + 1;
     $('.moves').text(moves);
     switch (moves) {
-        case 5: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
         case 10: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
-        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
+        case 15: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o'); break;
+        case 20: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
     }
 
 }
@@ -120,10 +123,13 @@ function resetMoves() {
     $('.moves').text(moves);
 }
 
-// function resetStars() {
-//     var starArray = [];
-//     starArray = $('.stars').children('li').toArray;
-//     starArray.forEach(function(elem) {
-//         elem.removeClass().addClass('fa fa-star');
-//     }); 
-// }
+function resetStars() {
+    $('.stars').children('li').replaceWith("<li><i class=\"fa fa-star\"></i></li>");
+}
+
+function gameOver() {
+    $('.container').remove();
+    $('body').append("<h2>Congratulations!!!</h2>");
+    $('body').append("<p>Number of moves: " + moves + "</p>");
+
+}
