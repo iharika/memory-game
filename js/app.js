@@ -94,10 +94,10 @@ function cardMatchFailure() {
     'use strict';
     openCards.forEach(function (elem) {
         elem.removeClass().addClass('card error');
-        elem.effect('shake');
+        elem.effect('shake','slow');
         setTimeout(function () {
             elem.removeClass().addClass('card');
-        }, 500);
+        }, 250);
     });
 }
 /*  Function to show card match success
@@ -108,6 +108,7 @@ function cardMatchSuccess() {
     'use strict';
     openCards.forEach(function (elem) {
         elem.removeClass().addClass('card match');
+        elem.off('click');
     });
     totalOpenCards = totalOpenCards + 2;
     if (totalOpenCards === 16) {
