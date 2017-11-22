@@ -8,6 +8,10 @@ html {
     box-sizing: inherit;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     width: 100%;
@@ -241,3 +245,24 @@ and (max-device-width: 767px)
 }
 
 
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .deck {
+        max-width: 99%;
+        max-height: auto;
+        /* height:760px; */
+    }
+    .card {
+        height: 90px !important;
+        max-width: 20%;
+        max-height: 20%;
+        margin: 2%;
+    }
+    .score-panel {
+        width: 99%;
+    }
+    .game-title {
+        font-size: 22px;
+    }
+    
+    }
