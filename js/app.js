@@ -65,7 +65,7 @@ function shuffleTheDeck() {
 function addActionsToCards() {
     'use strict';
     $('.card').click(function (event) {
-        if (!$(this).hasClass('open show')) {
+        if ((!$(this).hasClass('open show')) && (!$(this).hasClass('error')) ) {
             displayCard($(this));
             addItemToList($(this));
         }
@@ -74,11 +74,11 @@ function addActionsToCards() {
 
 // Validates current clicked card
 // Process the opened cards
-function validateCardMatchAndProcess(card) {
+function validateCardMatchAndProcess() {
     'use strict';
     calculateRatingAndUpdate();
     // Check if the cards match
-    if (openCards[0].children()[0].className == openCards[1].children()[0].className) {
+    if ((openCards[0].children()[0].className == openCards[1].children()[0].className) && !(openCards[0].hasClass('error')) &&  !(openCards[1].hasClass('error')) )  {
         // On successful card match
         cardMatchSuccess();
     }
