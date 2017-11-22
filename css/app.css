@@ -229,7 +229,7 @@ and (max-device-width: 767px)
     }
     .card {
         height: 90px !important;
-        max-width: 20%;
+        max-width: 17%;
         max-height: 25%;
     }
     .score-panel {
