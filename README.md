@@ -14,7 +14,6 @@ Each turn:
 4. If the cards do not match, both cards are flipped face down.
 5. The game ends once all cards have been correctly matched.
 
-<<<<<<< HEAD
 =======
 ## How to run/play the game
 1. To run the game, open index.html in your browser.
@@ -25,7 +24,6 @@ Each turn:
 6. To restart the game, user can click on ```play again``` button from the result modal dialog.
 7. Alternatively, user can close the modal and restart the game by clicking on the restart icon above the tile section.
 
->>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
 ## Dependencies
 This project uses the following libraries
 1. ```jquery```
