@@ -41,7 +41,11 @@ h1 {
 
 .deck {
     width: 660px;
+<<<<<<< HEAD
     height: 760px;
+=======
+    min-height: 680px;
+>>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -134,11 +138,18 @@ h1 {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+<<<<<<< HEAD
     width: 90% !important;
     height: 80%;
     margin: 2px;
     padding: 0;
     border-radius: 2px;
+=======
+    width: 100% !important;
+    height: 80%;
+    margin: 0;
+    padding: 0;
+>>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
 }
 
 .modal-content {
@@ -156,12 +167,19 @@ h1 {
 .btn {
     cursor: pointer;
 }
+<<<<<<< HEAD
 
 .success-won-msg {
     font-size: 24px;
 }
 
 
+=======
+.success-won-msg{
+    font-size: 24px;
+}
+
+>>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
 /*Timer  */
 
 span#time_ticker {
@@ -169,6 +187,7 @@ span#time_ticker {
     padding: 4px;
     margin-left: 10px;
     border-radius: 2px;
+<<<<<<< HEAD
 }
 
 
@@ -241,3 +260,6 @@ and (max-device-width: 767px)
 }
 
 
+=======
+}
+>>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626

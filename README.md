@@ -14,6 +14,18 @@ Each turn:
 4. If the cards do not match, both cards are flipped face down.
 5. The game ends once all cards have been correctly matched.
 
+<<<<<<< HEAD
+=======
+## How to run/play the game
+1. To run the game, open index.html in your browser.
+2. The game should automatically show a pop-up asking you to start the game.
+3. Once started the time ticker begins.
+4. User can click on the cards to reveal the image.
+5. Once user is able to match all 16 cards, the game ends - User wins.!!! Woohoo..!!!
+6. To restart the game, user can click on ```play again``` button from the result modal dialog.
+7. Alternatively, user can close the modal and restart the game by clicking on the restart icon above the tile section.
+
+>>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
 ## Dependencies
 This project uses the following libraries
 1. ```jquery```
