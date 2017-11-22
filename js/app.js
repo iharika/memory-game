@@ -94,17 +94,10 @@ function cardMatchFailure() {
     'use strict';
     openCards.forEach(function (elem) {
         elem.removeClass().addClass('card error');
-<<<<<<< HEAD
-        elem.effect('shake', 'slow', '1');
-        setTimeout(function () {
-            elem.removeClass().addClass('card');
-        }, 1000);
-=======
         elem.effect('shake');
         setTimeout(function () {
             elem.removeClass().addClass('card');
         }, 500);
->>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
     });
 }
 /*  Function to show card match success
@@ -136,10 +129,6 @@ function calculateRatingAndUpdate() {
         case 20:
             $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
             break;
-<<<<<<< HEAD
-        case 30: $('li .fa-star').last().removeClass('fa-star').addClass('fa-star-o');
-=======
->>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
     }
 }
 
@@ -179,11 +168,7 @@ function gameOver() {
     $('#number-of-moves').text(moves);
     $('#stars').text(stars);
     $('#timer-result').text(timerResult);
-<<<<<<< HEAD
-    $('#exampleModalLong').modal();
-=======
     $('#exampleModalLong').modal()
->>>>>>> 69bdf6a7d2bb3ac245575176943d0cfc9be4d626
     clearInterval(t);
     d, newd = '';
 }
